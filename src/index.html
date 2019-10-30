@@ -9,4 +9,55 @@
 <body>
     <section id="root"></section>
 </body>
+<script>
+    document.getElementById('post-btn').onclick = function () {
+        document.getElementById('post-btn').classList.add('clicked');
+        document.getElementById('header').classList.add('upload');
+    };
+
+    // ドラッグ&ドロップ
+    let fileArea = document.getElementById('drag-drop-area'),
+        fileInput = document.getElementById('upload-area');
+
+    fileArea.addEventListener('dragover', function (evt) {
+        evt.preventDefault();
+        fileArea.classList.add('dragover');
+    });
+
+    fileArea.addEventListener('dragleave', function (evt) {
+        evt.preventDefault();
+        fileArea.classList.remove('dragover');
+    });
+    fileArea.addEventListener('drop', function (evt) {
+        evt.preventDefault();
+        fileArea.classList.remove('dragenter');
+        var files = evt.dataTransfer.files;
+        fileInput.files = files;
+    });
+
+
+    // 画像プレビュー
+    let img = document.getElementById('file-preview'),
+        remove_btn = document.getElementById('remove-btn');
+
+    document.getElementById('form').addEventListener('change', function (e) {
+        // 1枚だけ表示する
+        let file = e.target.files[0];
+        // ファイルのブラウザ上でのURLを取得する
+        let blobUrl = window.URL.createObjectURL(file);
+        // img要素に表示
+        img.src = blobUrl;
+        if (img.src == blobUrl) {
+            img.classList.add('uploaded');
+            fileArea.style.display = 'none';
+            remove_btn.style.display = 'block';
+        }
+    });
+    remove_btn.onclick = function () {
+        img.classList.remove('uploaded');
+        fileArea.style.display = 'block';
+        img.removeAttribute('src');
+        remove_btn.style.display = 'none';
+    };
+</script>
 </html>
