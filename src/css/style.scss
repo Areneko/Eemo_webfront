@@ -1,0 +1,377 @@
+$primary: #7EBEFF;
+$secondary: #7EDCFF;
+$black: #333333;
+$gray: #CCCCCC;
+$gradient01: linear-gradient(90deg, $primary, $secondary);
+
+* {
+    font-family: "fot-klee-pro", sans-serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+}
+
+body {
+    background-color: #F5F5F5;
+    padding: 50px 0 0 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* Start - オブジェクト */
+
+.cross {
+    transition: 0.3s;
+    width: 15px;
+    height: 1px;
+    background: #fff;
+}
+
+.cross::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    transform: rotate(90deg);
+    background: #fff;
+}
+
+/* End - オブジェクト */
+
+/* Start - ○ッター */
+
+.header {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    >a>.cross {
+
+        position: relative;
+        top: 7.5px;
+        width: 0;
+
+        &::before {
+            width: 0;
+        }
+    }
+
+    >.ttl {
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 3px 20px;
+        text-align: center;
+        padding: 19px 0;
+        width: 100%;
+    }
+
+    >.ttl.eemo {
+        display: block;
+    }
+
+    >.ttl.upload {
+        display: none;
+    }
+}
+
+.header.upload {
+    >a {
+        display: block;
+        position: fixed;
+        left: 24px;
+        top: 17px;
+        width: 15px;
+        height: 15px;
+    }
+
+    >a>.cross {
+        background: $black;
+        transform: rotate(45deg);
+        width: 15px;
+
+        &::before {
+            background: $black;
+            width: 100%;
+        }
+    }
+
+    >.ttl.eemo {
+        display: none;
+    }
+
+    >.ttl.upload {
+        display: block;
+    }
+}
+
+.footer {
+    z-index: 900;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 3px 20px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 0;
+}
+
+/* End - ○ッター */
+
+/* Start - 投稿コンテンツ */
+
+.padding {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 3px 20px;
+    margin: 24px auto;
+    padding: 20px;
+    width: calc(100% - 80px);
+    border-radius: 16px;
+}
+
+.post-content {
+    position: relative;
+    height: 350px;
+
+    .story {
+        position: absolute;
+        top: 80px;
+        left: 70px;
+        line-height: 1.3;
+    }
+
+    >.img {
+        opacity: 0.8;
+        z-index: 10;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 350px;
+        border-radius: 70% 20% 100%;
+    }
+
+    >.background {
+        z-index: 0;
+        opacity: 1;
+        background-color: black;
+        width: 250px;
+        height: 350px;
+        border-radius: 70% 20% 100%;
+    }
+
+    >.story {
+        width: calc(100% - 70px);
+    }
+
+    >.wrapper {
+        z-index: 20;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 350px;
+        border-radius: 70% 20% 100%;
+
+        >.story {
+            width: calc(100vw - 150px);
+            z-index: 20;
+            color: white;
+        }
+    }
+}
+
+/* End - 投稿コンテンツ */
+
+/* Start - 投稿コンテンツ */
+
+.post-btn {
+    z-index: 300;
+    transition: 0.3s;
+    cursor: pointer;
+    background: $gradient01;
+    box-shadow: rgba(126, 189, 255, 0.5) 0 0 20px;
+    color: white;
+    position: fixed;
+    bottom: 29px;
+    left: calc(50% - 25px);
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+
+    >.txt {
+        display: none;
+    }
+
+    >.cross {
+        position: absolute;
+        top: 25px;
+        left: 17.5px;
+    }
+
+    &.clicked {
+        bottom: 30px;
+        left: calc(100% - 80px);
+        border-radius: 50px;
+
+        >.txt {
+            display: block;
+            font-size: 16px;
+            line-height: 50px;
+        }
+    }
+
+    +.background {
+        z-index: 200;
+        @extend .post-btn;
+        position: absolute;
+        background: white;
+        box-shadow: none;
+    }
+
+    &.clicked+.background {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+}
+
+.icon-list {
+    justify-content: center;
+    display: flex;
+}
+
+.icon-list>.icon {
+    margin: 0 40px;
+    width: 25px;
+
+    &:nth-child(1)>a>svg {
+        fill: $primary;
+    }
+
+    &:nth-child(2)>a>svg {
+        fill: $gray;
+    }
+}
+
+.upload-area {
+    transition: 0.3s;
+    position: fixed;
+    bottom: 30vh;
+    left: calc(50% - 120px);
+    z-index: 400;
+    display: none;
+    width: 240px;
+    height: 200px;
+    opacity: 0;
+
+    >input {
+        display: none;
+    }
+
+    >.txt {
+        line-height: 35px;
+        margin-top: 20px;
+        color: $gray;
+        font-size: 18px;
+
+        >span {
+            color: $black;
+            font-size: 24px;
+        }
+    }
+}
+
+.post-btn.clicked+.background+form .upload-area {
+    bottom: calc(90vh - 300px);
+    display: block;
+    opacity: 1;
+    animation-duration: 0.5s;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+}
+
+@keyframes fade-in {
+    0% {
+        bottom: 30vh;
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        bottom: calc(90vh - 300px);
+        display: block;
+        opacity: 1;
+    }
+}
+
+.preview-box {
+    z-index: 300;
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 400px;
+    width: calc(100vw - 80px);
+    max-height: 400px;
+    height: calc(100vw - 80px);
+}
+
+#file-preview {
+    display: none;
+}
+
+.uploaded {
+    display: block !important;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 3px 20px;
+    max-width: 400px;
+    width: calc(100vw - 80px);
+    max-height: 400px;
+    height: calc(100vw - 80px);
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.upload-btn {
+    @extend .post-btn;
+    bottom: initial;
+    left: calc(50% - 85px);
+    margin-top: 12.5px;
+    width: 170px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 37px;
+    border-radius: 40px;
+}
+
+#remove-btn {
+    display: none;
+    cursor: pointer;
+    z-index: 500;
+    background: $gradient01;
+    box-shadow: rgba(126, 189, 255, 0.5) 0 0 20px;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 100px;
+}

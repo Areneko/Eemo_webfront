@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Hello = () => {
-    return (
-        <h1>OK, deploy</h1>
-    )
-}
+import './css/style.scss'
 
-ReactDOM.render(<Hello />, document.getElementById('root'))
+import Header from './component/Header';
+
+ReactDOM.render(
+    <React.Fragment>
+        < Header />
+    </React.Fragment>
+    , document.getElementById('root')
+);
