@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import UploadSVG from '../img/upload.svg';
 import { setText } from '../modules/action';
+import { API_ENDPOINT } from '../env';
 
 const Footer = () => {
 
@@ -20,7 +21,7 @@ const Footer = () => {
             params.append('file', file);
             try {
                 const result = await Axios.post(
-                    '/api/generate',
+                    API_ENDPOINT + '/api/generate',
                     params
                 )
                 // Dispatch text

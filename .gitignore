@@ -138,3 +138,6 @@ dist/
 
 # Firebase cache
 .firebase
+
+# Env file
+env.js
