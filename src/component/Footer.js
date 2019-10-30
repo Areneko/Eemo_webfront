@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 import { img } from '../utils/image';
+import { setText } from '../modules/action';
 
 const Footer = () => {
 
     const [file, setFile] = useState(null);
+    const dispatch = useDispatch();
 
     const uploadImage = (e) => {
         setFile(e.target.files[0])
@@ -20,17 +23,25 @@ const Footer = () => {
                     '/api/generate',
                     params
                 )
-                console.log(result)
+                // Dispatch text
+                console.log(result.data)
+                dispatch(setText({
+                    text: result.data
+                }));
             } catch (e) {
                 console.log(e);
             }
             // Reset DOM
             document.getElementById('post-btn').classList.remove('clicked');
             document.getElementById('header').classList.remove('upload');
-            let img = document.getElementById('file-preview');
-            img.src = "";
+            let previewImg = document.getElementById('file-preview');
+            previewImg.src = "";
             let remove_btn = document.getElementById('remove-btn');
             remove_btn.click();
+            let displayImg = document.getElementById('display-img');
+            const blobURL = window.URL.createObjectURL(file);
+            displayImg.src = blobURL;
+            setFile(null);
         }
     }
 

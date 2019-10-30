@@ -1,16 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import { img } from '../utils/image'
 
 const Top = () => {
+    // Get text
+    const text = useSelector((state) => {
+        return state.text
+    });
     return (
         <React.Fragment>
             <div className="padding">
                 <div className="post-content pattern01">
-                    <img className="img" src={ img("emo.jpg") } alt="" />
+                    <img id="display-img" className="img" src={ img("emo.jpg") } alt="" />
                     <div className="img background"></div>
-                    <p className="story">これはサンプルです。<br />こんな感じで画像とテキストが組み合わされます。<br />下のボタンを押して、画像をアップロードしてください。<br />その写真だけのエモい文章が創り出されます</p>
+                    <p className="story">{ text }</p>
                     <div className="wrapper">
-                        <p className="story">これはサンプルです。<br />こんな感じで画像とテキストが組み合わされます。<br />下のボタンを押して、画像をアップロードしてください。<br />その写真だけのエモい文章が創り出されます</p>
+                        <p className="story">{ text }</p>
                     </div>
                 </div>
             </div>
