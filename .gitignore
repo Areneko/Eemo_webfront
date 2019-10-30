@@ -133,4 +133,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Dist folder
+dist/
 
+# Firebase cache
+.firebase

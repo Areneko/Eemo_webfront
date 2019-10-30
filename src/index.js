@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 const Hello = () => {
     return (
-        <h1>hello</h1>
+        <h1>OK, deploy</h1>
     )
 }
 

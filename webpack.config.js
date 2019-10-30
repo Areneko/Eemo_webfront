@@ -1,10 +1,4 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-
-const htmlWebpackPlugin = new HtmlWebpackPlugin({
-    template: './src/index.html',
-    filename: 'index.html'
-});
 
 module.exports = {
     mode: process.env.NODE_ENV,
@@ -27,6 +21,5 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             }
         ]
-    },
-    plugins: [htmlWebpackPlugin]
+    }
 }
