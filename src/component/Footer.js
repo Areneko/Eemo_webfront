@@ -24,6 +24,13 @@ const Footer = () => {
             } catch (e) {
                 console.log(e);
             }
+            // Reset DOM
+            document.getElementById('post-btn').classList.remove('clicked');
+            document.getElementById('header').classList.remove('upload');
+            let img = document.getElementById('file-preview');
+            img.src = "";
+            let remove_btn = document.getElementById('remove-btn');
+            remove_btn.click();
         }
     }
 
