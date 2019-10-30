@@ -30,7 +30,6 @@ module.exports = {
                     {
                         loader: 'css-loader?modules',
                         options: {
-                            url: false,
                             importLoaders: 2
                         }
                     },
@@ -38,6 +37,10 @@ module.exports = {
                         loader: 'sass-loader'
                     }
                 ]
+            },
+            {
+                test: /\.(jpg|png)$/,
+                loader: ['url-loader']
             }
         ]
     },
