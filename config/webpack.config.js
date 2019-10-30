@@ -8,7 +8,7 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 
 module.exports = {
     mode: process.env.NODE_ENV,
-    entry: './src/index.js',
+    entry: ['@babel/polyfill', './src/index.js'],
     output: {
         path: path.resolve('dist'),
         filename: '[name].dist.js',

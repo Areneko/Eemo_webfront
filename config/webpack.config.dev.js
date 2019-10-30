@@ -7,6 +7,13 @@ module.exports = merge(webpackConfig, {
         inline: true,
         open: true,
         host: 'localhost',
-        port: 8080
+        port: 3000,
+        proxy: {
+            '/api/**': {
+                target: 'http://localhost:8080',
+                secure: false,
+                logLevel: 'debug'
+            }
+        }
     }
 });

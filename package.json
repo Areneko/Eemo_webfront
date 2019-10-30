@@ -11,6 +11,7 @@
         "deploy": "yarn build && firebase deploy && open https://eemo-fad7f.firebaseapp.com"
     },
     "devDependencies": {
+        "@babel/polyfill": "^7.6.0",
         "babel-cli": "^6.26.0",
         "babel-core": "^6.26.3",
         "babel-loader": "7",
