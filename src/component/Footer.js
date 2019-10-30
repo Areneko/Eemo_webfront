@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 import { useDispatch } from 'react-redux';
 
-import { img } from '../utils/image';
+import UploadSVG from '../img/upload.svg';
 import { setText } from '../modules/action';
 
 const Footer = () => {
@@ -54,7 +54,7 @@ const Footer = () => {
 
             <form id="form" action="" method="post" encType="multipart/form-data" onSubmit={ postImage }>
                 <label id="drag-drop-area" className="upload-area" htmlFor="upload-area">
-                    <img src={ img("upload.svg") } alt="" />
+                    <img src={ UploadSVG } alt="" />
                     <p className="txt">Drag and Drop files here<br />
                         <span>or</span>
                     </p>
